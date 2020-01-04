@@ -14,10 +14,10 @@ import time
 
 
 def getDays():
-    inlove_date = datetime.datetime(2020, 1, 1)
+    in_date = datetime.datetime(2020, 1, 3)
     today_date = datetime.datetime.today()
-    inlove_days = (today_date - inlove_date).days
-    return str(inlove_days)
+    in_days = (today_date - in_date).days
+    return str(in_days)
 
 
 def getHtmlText(url, headers):
@@ -63,7 +63,7 @@ def sendemail(text):
     date_today = time.strftime("%Y-%m-%d", time.localtime())
     msg_from = '2940563940@qq.com'  # 发送方邮箱
     passwd = 'dozeppgiapehdeaj'  # 填入发送方邮箱的授权码
-    receivers = ['17552759310@sina.cn']  # 收件人邮箱
+    receivers = ['17552759310@sina.cn,yehang@sjtu.edu.cn']  # 收件人邮箱
 
     subject = "今日睡前小故事 " + str(date_today)  # 主题
 
@@ -95,8 +95,8 @@ def main():
             url = 'http://www.tom61.com/ertongwenxue/shuiqiangushi/index.html'
         else:
             url = 'http://www.tom61.com/ertongwenxue/shuiqiangushi/index_' + str(i) + '.html'
-        # print("正在爬取第%s页链接：" % (i))
-        # print(url + '\n')
+        print("正在爬取第%s页链接：" % (i))
+        print(url + '\n')
         html = getHtmlText(url, headers)
         # print(html)
         getUrlList(namelist, urllist, html)
@@ -107,7 +107,7 @@ def main():
     # 发送邮件
     day_time = int(time.mktime(datetime.date.today().timetuple()))  # 0点的时间戳
     # print(time.time()-day_time)
-    left_time = 18*60*60+17*60 - (time.time()-day_time)   # 第一个参数设置发送时间
+    left_time = 19 * 60 * 60 + 11 * 60 - (time.time() - day_time)  # 第一个参数设置发送时间
     # print(left_time)
     time.sleep(left_time)
     i = 0
@@ -116,15 +116,14 @@ def main():
         title = namelist[i]
         # if title is None:
         #     title = '无题'
-        # print('Article ' + str(i + 1))
+        print('Article ' + str(i + 1))
         text = '    ' + title + '\n\n' + getActicle(html)  #
         if len(text) < 20 or title is None:
-            continue   # 跳过
-        print(text)
+            continue  # 跳过
+        # print(text)
         sendemail(text)
         i = i + 1
-        time.sleep(1*1*60)  # 间隔时间
-
+        time.sleep(1 * 10 * 60)  # 间隔时间
 
 
 if __name__ == '__main__':
