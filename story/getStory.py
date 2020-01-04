@@ -60,7 +60,7 @@ def main():
     }
     urllist = []
     namelist = []
-    for i in range(1, 30):  # 11在网页上查看，一共有11页, [1,22)
+    for i in range(1, 71):  # 11在网页上查看，一共有11页, [1,22)
         if i == 1:
             url = 'http://www.tom61.com/ertongwenxue/shuiqiangushi/index.html'
         else:
