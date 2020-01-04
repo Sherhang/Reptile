@@ -1,3 +1,4 @@
+#!/home/yehang/anaconda3/envs/Spider/bin/python3
 # -*- coding: utf-8 -*-
 """
 Created on Thu Mar 14 21:25:45 2019
@@ -45,10 +46,9 @@ def parsehtml2(html):
     return "\n".join(text)
 
 def sendemail(url,headers):
-
-    msg_from=''                                 #发送方邮箱
-    passwd=''                                   #填入发送方邮箱的授权码
-    receivers=[',']                             #收件人邮箱
+    msg_from='2940563940@qq.com'          #发送方邮箱
+    passwd='dozeppgiapehdeaj'    #填入发送方邮箱的授权码
+    receivers=['17552759310@sina.cn']                             #收件人邮箱
                             
     subject='今日份的睡前小故事'                                     #主题     
     html=getHTMLText(url,headers)
