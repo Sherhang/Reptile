@@ -37,6 +37,7 @@ def getHtmlText(url, headers):
 def getUrlList(namelist, urllist, html='http://www.tom61.com/ertongwenxue/shuiqiangushi/index.html'):
     url = 'http://www.tom61.com/'  # 最上层的地址
     soup = BeautifulSoup(html, 'html.parser')
+    print(soup)
     t = soup.find('dl', attrs={'class': 'txt_box'})  # find只找到一个满足条件的; 打开网页，查看源码
     # print('t= ', t)
     i = t.find_all('a')
@@ -120,8 +121,8 @@ def main():
         text = '    ' + title + '\n\n' + getActicle(html)  #
         if len(text) < 20 or title is None:
             continue  # 跳过
-        # print(text)
-        sendemail(text)
+        print(text)
+        # sendemail(text)
         i = i + 1
         time.sleep(1 * 10 * 60)  # 间隔时间
 
